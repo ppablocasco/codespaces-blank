@@ -85,6 +85,15 @@
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => openLightbox(index));
     });
+
+    initDynamicBar();
+  }
+
+  function initDynamicBar() {
+    const scrollContainer = document.querySelector('.dynamic-bar-scroll');
+    const track = document.querySelector('.dynamic-bar-track');
+    if (!scrollContainer || !track) return;
+    scrollContainer.scrollLeft = 0;
   }
 
   if (document.readyState === 'loading') {
