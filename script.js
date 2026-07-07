@@ -91,6 +91,8 @@
   }
 
   /* Constellation background: interactive canvas with points and connecting lines */
+
+
   function initConstellation() {
     const canvas = document.getElementById('constellation-canvas');
     if (!canvas) return;
