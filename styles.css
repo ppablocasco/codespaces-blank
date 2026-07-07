@@ -33,9 +33,22 @@ img {
 }
 
 .page-shell {
-  width: min(1200px, calc(100% - 32px));
+  width: min(1400px, calc(100% - 32px));
   margin: 0 auto;
   padding: 24px 0 48px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Constellation canvas sits behind page content */
+#constellation-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
 }
 
 .topbar {
@@ -273,8 +286,8 @@ img {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(340px, 1fr));
+  gap: 24px;
   align-items: stretch;
 }
 
@@ -284,15 +297,19 @@ figure.project-card {
   flex-direction: column;
   overflow: hidden;
   min-height: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
 figure.project-card img {
   width: 100%;
-  height: 260px;
+  height: 360px;
   object-fit: cover;
   display: block;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px 14px 0 0;
+  border: none;
   flex-shrink: 0;
 }
 
@@ -321,21 +338,9 @@ figure.project-card img {
 }
 
 /* Mejor presentación de capturas: imagen grande + pie con fondo */
+/* Ensure the figure acts as a single card; image rounds the top corners */
 figure.project-card {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  overflow: visible;
-}
-
-figure.project-card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  display: block;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.04);
+  /* kept intentionally minimal here; primary card styles set above */
 }
 
 .project-tags {
@@ -436,11 +441,11 @@ figure.project-card img {
 }
 
 figure.project-card .project-content {
-  margin-top: 12px;
+  margin-top: 0;
   padding: 16px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .case-study {
@@ -606,17 +611,23 @@ img.zoomable:active {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
 figure.project-card img {
   width: 100%;
-  height: 300px;
+  height: 360px;
   object-fit: cover;
   display: block;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px 14px 0 0;
+  border: none;
 }
 
 @media (max-width: 900px) {
