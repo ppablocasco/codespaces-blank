@@ -16,45 +16,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  /* 1. El contenedor que oculta lo que sobra */
-.dynamic-bar-wrapper {
-  overflow: hidden; /* Vital: oculta los elementos que se salen de la pantalla */
-  width: 100%;
-  position: relative; /* Opcional, por si luego quieres agregar degradados a los lados */
-}
-
-/* 2. La pista que se mueve */
-.dynamic-bar-track {
-  display: flex;
-  width: max-content; /* Vital: Permite que el contenedor crezca a lo ancho para acomodar todos los ítems en una línea */
-  gap: 16px; /* Ajusta la separación entre los ítems según tu diseño */
   
-  /* Llama a la animación: 20 segundos, velocidad constante (linear) e infinita */
-  animation: scroll-marquee 20s linear infinite; 
-}
-
-/* 3. Asegurar que los ítems mantengan su forma */
-.dynamic-bar-item {
-  flex-shrink: 0; /* Evita que las cajas se compriman o aplasten */
-  /* (Aquí mantienes el background, padding, border-radius que ya tienes) */
-}
-
-/* 4. La matemática del bucle */
-@keyframes scroll-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Se traslada a la izquierda exactamente la mitad de su ancho total. 
-       Esto funciona perfecto porque tienes 2 grupos idénticos de ítems. */
-    transform: translateX(calc(-50% - 8px)); /* El -8px es la mitad del 'gap' de 16px para alinear perfecto. Si no usas gap, déjalo en -50% */
-  }
-}
-
-/* Opcional: Pausar al pasar el mouse por encima (muy buena práctica de UX) */
-.dynamic-bar-wrapper:hover .dynamic-bar-track {
-  animation-play-state: paused;
-}
   <body>
     <div class="page-shell">
       <header class="topbar">
